@@ -25,6 +25,26 @@ var result = num1 + num2;
     res.send("The result of the calculation is " + result);
 });
 
+
+///////////////////////////BMI Calculator/////////////////////////////////////////////////
+
+
+
+
+app.get('/bmicalculator', (req, res) => {              // "/" is the home page
+  res.sendFile(__dirname + "/bmiCalculator.html");            //res.sendFile is used if its a file ; __dirname is the current path of the file name
+})
+
+app.post("/bmicalculator", function(req, res) {
+
+  var weight = parseFloat(req.body.weight); //parseFloat is used for a decimal number
+  var height = parseFloat(req.body.height); 
+  
+  var result2 = (weight / (height * height));
+  
+      res.send("Your BMI is " + result2);
+  });
+
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 })
